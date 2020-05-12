@@ -1,9 +1,10 @@
+
 #face {
   position: relative;
   animation-name: shrink;
-  animation-duration: 5s;
+  animation-duration: 4s;
   animation-fill-mode: forwards;
-  animation-play-state: running;
+  animation-play-state: paused;
   animation-iteration-count: 1;
   border-radius: 100%;
   border: 2px solid rgba(0, 0, 0, 0.6); 
@@ -14,25 +15,49 @@
   margin-bottom: auto;
 }
 
+#container {
+    display: flex;
+}
+
+.navbar {
+    visibility: hidden;
+    
+}
+
+.icon {
+    display: inline-flex;
+}
+
+#navbar-name {
+    display: inline-flex;
+}
+
+
+
+
 @keyframes shrink {
     0% {
-        width: 40%;
+        height: auto;
+        width: 35%;
         opacity: 0%;
         margin-top: 4%;
         margin-left: 30%;
     }
-  35% {
-    width: 40%;
-    opacity: 100%;
-    margin-top: 6%;
-    margin-left: 30%;
+    
+    40% {
+        height: auto;
+        width: 40%;
+        opacity: 100%;
+        margin-top: 4%;
+        margin-left: 30%;
     }
-  100% {
-    width: 10%;
-    opacity: 100%;
-    margin-top: 2%;
-    margin-left: 2%;
+    
+    100% {
+        height: auto;
+        width: 10%;
+        opacity: 100%;
+        margin-top: 1%;
+        margin-left: 1%;
     } 
 }
 
-/*# sourceMappingURL=app.css.map */
