@@ -1,3 +1,65 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+}
+
+#body {
+    display: flex;
+}
+
+/* Media Queries */
+@media (max-width:700px) {
+	#container {
+        width: 100vw;
+    }
+    #face {
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #panel-container {
+        width: 100vw;
+    }
+}
+@media (min-width:701px) and (max-width:900px) {
+    #container {
+        width: 25%;
+   }
+   #face {
+       width: 90%;
+   }
+   #panel-container {
+    width: 75%;
+}
+}
+
+@media (min-width:901px) {
+	#container {
+ 		width: 15%;
+    }
+    #face {
+        width: 100%;
+    }
+    #panel-container {
+        display: block;
+        width: 85%;
+    }
+}
+
+/* NavBar component styling */
+#container {
+    display: flexbox;
+    width: 15%;
+    height: 97vh;
+    max-height: 97vh;
+    padding: 10px;
+    box-shadow: 0 6px 10px 1px rgba(0, 0, 0, 0.5);
+    background-color: #fefbff;
+    margin: 0px;
+    z-index: 100;
+    flex-wrap: wrap;
+}
 
 #face {
   position: relative;
@@ -8,27 +70,10 @@
   margin-bottom: 20px;
 }
 
-html, body {
-    height: 100%;
-    width: 100%;
-    margin: 0px;
-}
-
-#container {
-    display: block;
-    width: 15%;
-    height: 97vh;
-    max-height: 97vh;
-    padding: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    background-color: #fefbff;
-    margin: 0px;
-}
-
 #navbar {
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 15vh 8vh 8vh 8vh 12vh;
+    grid-template-rows: 15vh 8vh 8vh 8vh 8vh;
     grid-template-areas: 
     "github"
     "linkedin"
@@ -47,14 +92,6 @@ html, body {
     font-family: 'Quicksand', sans-serif;
 }
 
-i {
-    margin-right: 5px;
-}
-
-a {
-    text-decoration: none;
-}
-
 .nav-button {
     padding: 10px;
     text-align: left;
@@ -63,7 +100,7 @@ a {
 
 .nav-button:hover {
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.4);
-    border-radius: 10%;
+    border-left: 5px solid royalblue;
 }
 
 #github, #resume, #email{
@@ -87,31 +124,31 @@ a {
     color: #f0e626;
 }
 
-@media (max-width:700px) {
-	#container {
-        width: 100vw;
-    }
-    #face {
-        width: 70%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
-@media (min-width:701px) and (max-width:900px) {
-    #container {
-        width: 25%;
-   }
-   #face {
-       width: 90%;
-   }
+a {
+    text-decoration: none;
 }
 
-@media (min-width:901px) {
-	#container {
- 		width: 15%;
-    }
-    #face {
-        width: 100%;
-    }
+i {
+    margin: 5px;
 }
+
+
+/* Body Styling */
+#panel-container {
+    display: flexbox;
+    width: 85%;
+    height: auto;
+    z-index: 0;
+    overflow-wrap: wrap;
+}
+
+.panel {
+    display: block;
+    width: 100%;
+    height: 95vh;
+    box-shadow: 0 4px 10px 5px rgba(255, 255, 255, 0.5);
+    margin-bottom: 0px;
+}
+
+
 

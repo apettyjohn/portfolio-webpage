@@ -4,6 +4,7 @@ const width = document.width;
 
 document.addEventListener('DOMContentLoaded', () => {
     assignGridAreas();
+    stackPanels();
  
 });
 
@@ -18,3 +19,13 @@ function assignGridAreas() {
     };
 }
 
+function stackPanels() {
+    const panels = document.getElementsByClassName('panel');
+    console.log(panels);
+    for (var i = 0; i < panels.length; i ++) {
+        let panel = panels[i];
+        let stackOrder = panels.length - Number(panel.dataset["order"]);
+        panel.style.zIndex = `${stackOrder}`;
+        panel.style.backgroundColor = panel.dataset["color"];
+    };
+}
