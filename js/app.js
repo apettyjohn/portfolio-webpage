@@ -3,14 +3,18 @@ const width = document.width;
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    
-    document.querySelector('#face').addEventListener('animationend', () => {
-        navbar = document.getElementsByClassName('navbar')
-        console.log(navbar)
-        for (var item = 0; item < navbar.length; item++) {
-            navbar[item].style.visibility = 'visible';
-        }
-        
-    });
-    document.querySelector('#face').style.animationPlayState = 'running';
-})
+    assignGridAreas();
+ 
+});
+
+
+function assignGridAreas() {
+    let navButtons = document.getElementsByClassName('nav-button');
+    console.log(navButtons);
+    for (var i = 0; i < navButtons.length; i ++) {
+        let iconName = navButtons[i].innerText.toLowerCase();
+        console.log(iconName)
+        navButtons[i].style.gridArea = iconName;
+    };
+}
+

@@ -3,23 +3,34 @@
     <head>
         <title>Adam Pettyjohn - Home</title>
         <link href="css/app.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css2?family=Inter&family=Quicksand:wght@600&family=Roboto:wght@500&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/68dbb9a240.js" crossorigin="anonymous"></script>
         <script src="js/app.js"></script>
         <meta charset="utf_8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+        <!--Navbar-->
         <div id="container">
-            <img src="face.JPG" id="face">
+            <div id="image">
+                <img src="face.JPG" id="face">
+            </div>
             
-            <!--Navbar-->
-            <div class="navbar">
-                <div id="navbar-name">Adam Pettyjohn</div>
-                <span class="icon"><i class="fab fa-github"></i>GitHub</span>
-                <span class="icon"><i class="fab fa-linkedin"></i>Lindedin</span>
-                <span class="icon"><i class="fas fa-file-pdf"></i>Resume</span>
-                <span class="icon"><i class="fas fa-envelope"></i>Email</span>
-                
+            <div id="navbar">
+                <div id="nav-name">Adam Pettyjohn</div>
+                <a href="https://github.com/apettyjohn" target="_blank">    
+                    <div class="nav-button" id="github"><i class="fab fa-github"></i>GitHub</div>
+                </a>
+                <a href="https://www.linkedin.com/in/adam-pettyjohn-195b031a6" target="_blank">
+                    <div class="nav-button" id="linkedin"><i class="fab fa-linkedin"></i>Linkedin</div>
+                </a>
+                <a href="./resume.pdf" target="_blank">
+                    <div class="nav-button" id="resume"><i class="fas fa-file-pdf"></i>Resume</div>
+                </a>
+                <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to=apettyjohn7@gmail.com" target="_blank">   
+                    <div class="nav-button" id="email"><i class="fas fa-envelope"></i>Email</div>
+                </a> 
+                <div id="footer"><i class="fas fa-star" aria-hidden="true"></i>Udated 2020</div>
             </div>
         </div> 
         

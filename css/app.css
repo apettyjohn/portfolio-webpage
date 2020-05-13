@@ -1,62 +1,88 @@
 
 #face {
   position: relative;
-  animation-name: shrink;
-  animation-duration: 4s;
-  animation-fill-mode: forwards;
-  animation-play-state: paused;
-  animation-iteration-count: 1;
   border-radius: 100%;
-  border: 2px solid rgba(0, 0, 0, 0.6); 
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 50px;
-  margin-bottom: auto;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
 }
 
 #container {
-    display: flex;
+    display: block;
+    width: 15%;
+    height: 97vh;
+    max-height: 97vh;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: #fefbff;
+    margin: 0px;
 }
 
-.navbar {
-    visibility: hidden;
-    
+#navbar {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 15vh 8vh 8vh 8vh 12vh;
+    grid-template-areas: 
+    "github"
+    "linkedin"
+    "resume"
+    "email"
+    "updated 2020";
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
-.icon {
-    display: inline-flex;
+#nav-name {
+    padding: 10px;
+    text-align: center;
+    font-size: 1.75em;
+    font-family: 'Quicksand', sans-serif;
 }
 
-#navbar-name {
-    display: inline-flex;
+i {
+    margin-right: 5px;
 }
 
-
-
-@keyframes shrink {
-    0% {
-        height: auto;
-        width: 35%;
-        opacity: 0%;
-        margin-top: 4%;
-        margin-left: 30%;
-    }
-    
-    40% {
-        height: auto;
-        width: 40%;
-        opacity: 100%;
-        margin-top: 4%;
-        margin-left: 30%;
-    }
-    
-    100% {
-        height: auto;
-        width: 10%;
-        opacity: 100%;
-        margin-top: 1%;
-        margin-left: 1%;
-    } 
+a {
+    text-decoration: none;
 }
 
+.nav-button {
+    padding: 10px;
+    text-align: left;
+    font-size: 1.2em;
+}
+
+.nav-button:hover {
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.4);
+    border-radius: 10%;
+}
+
+#github, #resume, #email{
+    font-family: 'Inter', sans-serif;
+    color: black;
+}
+#linkedin {
+    font-family: 'Roboto', sans-serif;
+    color: black;
+}
+
+#footer {
+    margin-top: 1.2em;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    color: black;
+    align-items: baseline;
+}
+
+.fa-star {
+    color: #f0e626;
+}
