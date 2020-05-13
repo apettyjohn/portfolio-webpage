@@ -32,6 +32,20 @@
     display: inline-flex;
 }
 
+#footer {
+    display: block;
+    opacity: 70%;
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    text-align: center;
+    padding: 10px;
+}
+
+#footer:hover {
+    opacity: 100%;
+    background-color: lightgray;
+}
 
 
 
