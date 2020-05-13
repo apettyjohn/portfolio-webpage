@@ -3,18 +3,18 @@ const width = document.width;
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    face = document.querySelector('#face');
-    face.style.animationName = 'shrink';
-    face.style.animationPlayState = 'running';
-    document.querySelector('#face').addEventListener('animationend', () => {
-        document.querySelector('#container').style.width = '12%';
+    assignGridAreas();
+ 
+});
 
-        face.style.animationName = '';
-        face.style.width = '100%';
-        face.style.marginTop = '0px';
 
-        navbar = document.querySelector('.navbar')
-        navbar.style.visibility = 'visible';
-        
-    });  
-})
+function assignGridAreas() {
+    let navButtons = document.getElementsByClassName('nav-button');
+    console.log(navButtons);
+    for (var i = 0; i < navButtons.length; i ++) {
+        let iconName = navButtons[i].innerText.toLowerCase();
+        console.log(iconName)
+        navButtons[i].style.gridArea = iconName;
+    };
+}
+
