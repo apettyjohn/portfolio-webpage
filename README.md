@@ -6,3 +6,6 @@ If you would like to contact me you may through the email link in the sidebar.
 
 ## Contributions
 This repositiory is currently not open for contributions.
+
+### Take a look!
+Here it is: https://apettyjohn.github.io/portfolio-webpage/
