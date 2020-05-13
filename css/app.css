@@ -86,3 +86,32 @@ a {
 .fa-star {
     color: #f0e626;
 }
+
+@media (max-width:700px) {
+	#container {
+        width: 100vw;
+    }
+    #face {
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+@media (min-width:701px) and (max-width:900px) {
+    #container {
+        width: 25%;
+   }
+   #face {
+       width: 90%;
+   }
+}
+
+@media (min-width:901px) {
+	#container {
+ 		width: 15%;
+    }
+    #face {
+        width: 100%;
+    }
+}
+
