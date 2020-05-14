@@ -5,7 +5,8 @@ const width = document.width;
 document.addEventListener('DOMContentLoaded', () => {
     assignGridAreas();
     stackPanels();
- 
+    document.querySelector('#flag').addEventListener('mouseover', checkFlagState());
+    document.querySelector('#flag-text').addEventListener('click', hideShowFlag());
 });
 
 
@@ -28,4 +29,12 @@ function stackPanels() {
         panel.style.zIndex = `${stackOrder}`;
         panel.style.backgroundColor = panel.dataset["color"];
     };
+}
+
+function checkFlagState(event) {
+    target = event.target;
+}
+
+function hideShowFlag() {
+    pass;
 }
