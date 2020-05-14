@@ -2,17 +2,22 @@ const height = document.height;
 const width = document.width;
 
 
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', () => {
     assignGridAreas();
     stackPanels();
-    document.querySelector('#flag').addEventListener('mouseover', checkFlagState());
+    document.querySelector('#flag').addEventListener('mouseenter', checkFlagState());
     document.querySelector('#flag-text').addEventListener('click', hideShowFlag());
-});
+    
+    const arrows = document.getElementsByClassName('fa-caret-right');
+    for (var i=0;i < arrows.length;i++){
+        arrows[i].style.marginLeft = '18px';
+    };
+    setTimeout(function () {arrowAnimation(1, 10)}, 0);
 
+});
 
 function assignGridAreas() {
     let navButtons = document.getElementsByClassName('nav-button');
-    console.log(navButtons);
     for (var i = 0; i < navButtons.length; i ++) {
         let iconName = navButtons[i].innerText.toLowerCase();
         console.log(iconName)
@@ -22,7 +27,6 @@ function assignGridAreas() {
 
 function stackPanels() {
     const panels = document.getElementsByClassName('panel');
-    console.log(panels);
     for (var i = 0; i < panels.length; i ++) {
         let panel = panels[i];
         let stackOrder = panels.length - Number(panel.dataset["order"]);
@@ -31,10 +35,44 @@ function stackPanels() {
     };
 }
 
-function checkFlagState(event) {
-    target = event.target;
+function checkFlagState() {
+    
 }
 
+function arrowAnimation(duration, distance){
+    const arrows = document.getElementsByClassName('fa-caret-right');
+    let margin = arrows[0].style.marginLeft;
+    const start = Number(margin.slice(0,margin.length - 2));
+    console.log(start);
+    moveArrows(arrows, start, distance, duration, false);
+
+    function moveArrows(array, start, distance, duration, halfway) {
+    const frameRate = 5;
+    let increment = (2 * distance) / ((duration * 1000) / frameRate);
+    if (halfway === true) {
+        if (increment > 0) {
+            increment = 0 - increment;
+        };
+    };
+
+    for (var i=0;i<array.length;i++){
+        arrow = array[i];
+        margin = arrow.style.marginLeft;
+        arrow.style.marginLeft = (Number(margin.slice(0,margin.length - 2)) + increment).toString() + "px";
+    };
+
+    margin = Number(arrow.style.marginLeft.slice(0,arrow.style.marginLeft.length - 2));
+    if (margin >= (start + distance)){
+        halfway = true;
+    } else if (margin <= start){
+        return;
+    };
+
+    setTimeout(function () {moveArrows(array, start, distance, duration, halfway)}, frameRate);
+    }
+}
+
+
 function hideShowFlag() {
-    pass;
+    
 }
