@@ -58,7 +58,6 @@ html, body {
     background-color: #fefbff;
     margin: 0px;
     z-index: 100;
-    flex-wrap: wrap;
 }
 
 #face {
@@ -139,7 +138,6 @@ i {
     width: 85%;
     height: auto;
     z-index: 0;
-    overflow-wrap: wrap;
 }
 
 .panel {
@@ -149,6 +147,5 @@ i {
     box-shadow: 0 4px 10px 5px rgba(255, 255, 255, 0.5);
     margin-bottom: 0px;
 }
-
 
 
