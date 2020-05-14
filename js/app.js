@@ -5,15 +5,17 @@ const width = document.width;
 window.addEventListener('DOMContentLoaded', () => {
     assignGridAreas();
     stackPanels();
-    document.querySelector('#flag').addEventListener('mouseenter', checkFlagState());
+
     document.querySelector('#flag-text').addEventListener('click', hideShowFlag());
+    document.querySelector('#flag-text').addEventListener('mouseenter', () => {
+        arrowAnimation(0.5, 8)
+    });
     
     const arrows = document.getElementsByClassName('fa-caret-right');
     for (var i=0;i < arrows.length;i++){
         arrows[i].style.marginLeft = '18px';
     };
-    setTimeout(function () {arrowAnimation(1, 10)}, 0);
-
+    arrowAnimation(1, 10);
 });
 
 function assignGridAreas() {
@@ -35,15 +37,10 @@ function stackPanels() {
     };
 }
 
-function checkFlagState() {
-    
-}
-
 function arrowAnimation(duration, distance){
     const arrows = document.getElementsByClassName('fa-caret-right');
     let margin = arrows[0].style.marginLeft;
     const start = Number(margin.slice(0,margin.length - 2));
-    console.log(start);
     moveArrows(arrows, start, distance, duration, false);
 
     function moveArrows(array, start, distance, duration, halfway) {
@@ -70,8 +67,9 @@ function arrowAnimation(duration, distance){
 
     setTimeout(function () {moveArrows(array, start, distance, duration, halfway)}, frameRate);
     }
-}
+    return true;
 
+}
 
 function hideShowFlag() {
     
