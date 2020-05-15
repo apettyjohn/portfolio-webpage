@@ -1,7 +1,9 @@
-html, body {
+html, body, #body{
     height: 100%;
     width: 100%;
     margin: 0px;
+    padding: 0px;
+    border: 0px;
 }
 
 
@@ -12,9 +14,10 @@ html, body {
 #container {
     position: fixed;
     top: 0px;
-    right: 99vw;
+    left: -180px;
+    right: auto;
     display: flexbox;
-    width: 15%;
+    width: 160px;
     height: 97vh;
     max-height: 97vh;
     padding: 10px;
