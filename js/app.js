@@ -8,7 +8,7 @@ window.addEventListener('DOMContentLoaded', () => {
     stackPanels();
 
     document.querySelector('#flag-text').addEventListener('click', () => {
-        hideShowFlag(event)
+        hideShowFlag()
     });
     document.querySelector('#flag-text').addEventListener('mouseenter', () => {
         arrowAnimation(0.5, 8)
@@ -25,7 +25,6 @@ function assignGridAreas() {
     let navButtons = document.getElementsByClassName('nav-button');
     for (var i = 0; i < navButtons.length; i ++) {
         let iconName = navButtons[i].innerText.toLowerCase();
-        console.log(iconName)
         navButtons[i].style.gridArea = iconName;
     };
 }
@@ -75,21 +74,17 @@ function arrowAnimation(duration, distance){
 }
 
 function hideShowFlag() {
-    let leftDist = getComputedStyle(document.querySelector('#flag')).getPropertyValue('left');
-    let menuWidth = getComputedStyle(document.querySelector('#container')).getPropertyValue('width');
-    console.log(leftDist, menuWidth);
-    const time = 1;
-    switch (leftDist) {
-        case "0px":
-            expandMenu(time, 1);
-        case menuWidth:
-            collapseMenu(time);
-        default:
-            console.log("menu is in an inbetween state");
-    }
+    const menu = document.querySelector('#container');
+    const menuStyles = getComputedStyle(menu);
+    const menuLeft = Number(menuStyles.getPropertyValue('left').slice(0,menuStyles.getPropertyValue('left').length - 2));
+    if (menuLeft < 0) {
+        switchMenuState(1, "expand")
+    } else {
+        switchMenuState(1, "collapse")
+    };
 }
 
-function expandMenu(time, count){
+function switchMenuState(count, state){
 
     const menu = document.querySelector('#container')
     const menuStyles = getComputedStyle(menu);
@@ -98,27 +93,46 @@ function expandMenu(time, count){
     const menuWidth = Number(menuStyles.getPropertyValue('width').slice(0,menuStyles.getPropertyValue('width').length - 2)) + Number((2 * menuStyles.getPropertyValue('padding').slice(0,menuStyles.getPropertyValue('padding').length - 2)));
     let flagDist = Number(flagStyles.getPropertyValue('left').slice(0,flagStyles.getPropertyValue('left').length - 2));
     let distance = Number(menuStyles.getPropertyValue('left').slice(0,menuStyles.getPropertyValue('left').length - 2));
-    const maxVelocity = 4;
     const timeFrame = 5;
-    const iterations = (time * 1000) / timeFrame;
-    if (count <= menuWidth / maxVelocity) {
-        increment = count * (maxVelocity / (menuWidth / maxVelocity));
-    } else if (count > menuWidth / maxVelocity) {
-        increment = count * (-1 * maxVelocity / (menuWidth / maxVelocity)) + (2 * maxVelocity);
-    };
-    
-
-    console.log(distance, count, increment);
-
-    if (distance >= 0 || increment <= 0){
-        menu.style.setProperty('left', "0px");
-        flag.style.setProperty('left', (menuWidth.toString() + "px"));
-        return;
-    } else if (distance < 0){
-        menu.style.setProperty('left', ((distance + increment).toString() + "px"));
-        flag.style.setProperty('left', ((flagDist + increment).toString() + "px"));
+    if (state == "expand"){
+        maxVelocity = 4;
+    } else if (state == "collapse"){
+        maxVelocity = -4;
     };
 
-    setTimeout(function () {expandMenu(time, count + 1)}, timeFrame);
+    if (count <= menuWidth / Math.abs(maxVelocity)) {
+        increment = count * (maxVelocity / (menuWidth / Math.abs(maxVelocity)));
+    } else if (count > menuWidth / Math.abs(maxVelocity)) {
+        increment = count * (-1 * maxVelocity / (menuWidth / Math.abs(maxVelocity))) + (2 * maxVelocity);
+    };
+
+    //console.log(distance, flagDist, count, increment, state);
+    switch (state) {
+        case("expand"):
+            if (distance >= 0 || increment <= 0){
+                menu.style.setProperty('left', "0px");
+                flag.style.setProperty('left', (menuWidth.toString() + "px"));
+                return;
+            } else if (distance < 0){
+                menu.style.setProperty('left', ((distance + increment).toString() + "px"));
+                flag.style.setProperty('left', ((flagDist + increment).toString() + "px"));
+            };
+            break;
+        case("collapse"):
+            if (distance <= (0 - menuWidth) || increment >= 0){
+                menu.style.setProperty('left', ((-1 * menuWidth).toString() + "px"));
+                flag.style.setProperty('left', "0px");
+                return;
+            } else if (distance > (0 - menuWidth)){
+                menu.style.setProperty('left', ((distance + increment).toString() + "px"));
+                flag.style.setProperty('left', ((flagDist + increment).toString() + "px"));
+            };
+            break;
+        default:
+            console.log("menu is in an invalid state");
+            return;
+    };
+
+    setTimeout(function () {switchMenuState(count + 1, state)}, timeFrame);
 }
 
