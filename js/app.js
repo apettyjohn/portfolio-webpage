@@ -11,13 +11,9 @@ window.addEventListener('DOMContentLoaded', () => {
         hideShowFlag()
     });
     document.querySelector('#flag-text').addEventListener('mouseenter', () => {
-        arrowAnimation(0.5, 8)
+        arrowAnimation(0.4, 7)
     });
     
-    const arrows = document.getElementsByClassName('fa-caret-right');
-    for (var i=0;i < arrows.length;i++){
-        arrows[i].style.marginLeft = '18px';
-    };
     arrowAnimation(1, 10);
 });
 
@@ -40,8 +36,8 @@ function stackPanels() {
 }
 
 function arrowAnimation(duration, distance){
-    const arrows = document.getElementsByClassName('fa-caret-right');
-    let margin = arrows[0].style.marginLeft;
+    const arrows = document.querySelectorAll('#flag-text > .fas');
+    let margin = getComputedStyle(arrows[0]).getPropertyValue('margin-left');
     const start = Number(margin.slice(0,margin.length - 2));
     moveArrows(arrows, start, distance, duration, false);
 
@@ -56,11 +52,12 @@ function arrowAnimation(duration, distance){
 
     for (var i=0;i<array.length;i++){
         arrow = array[i];
-        margin = arrow.style.marginLeft;
-        arrow.style.marginLeft = (Number(margin.slice(0,margin.length - 2)) + increment).toString() + "px";
+        marginString = getComputedStyle(arrow).getPropertyValue('margin-left');
+        margin = Number(marginString.slice(0,marginString.length - 2));
+        arrow.style.setProperty('margin-left', (margin + increment).toString() + "px");
     };
 
-    margin = Number(arrow.style.marginLeft.slice(0,arrow.style.marginLeft.length - 2));
+    margin = Number(getComputedStyle(arrow).getPropertyValue('margin-left').slice(0,getComputedStyle(arrow).getPropertyValue('margin-left').length - 2));
     if (margin >= (start + distance)){
         halfway = true;
     } else if (margin <= start){
@@ -91,9 +88,12 @@ function switchMenuState(count, state){
     const flag = document.querySelector('#flag')
     const flagStyles = getComputedStyle(flag);
     const menuWidth = Number(menuStyles.getPropertyValue('width').slice(0,menuStyles.getPropertyValue('width').length - 2)) + Number((2 * menuStyles.getPropertyValue('padding').slice(0,menuStyles.getPropertyValue('padding').length - 2)));
+    const arrows = document.querySelectorAll('#flag-text > .fas');
+    const timeFrame = 5;
+
     let flagDist = Number(flagStyles.getPropertyValue('left').slice(0,flagStyles.getPropertyValue('left').length - 2));
     let distance = Number(menuStyles.getPropertyValue('left').slice(0,menuStyles.getPropertyValue('left').length - 2));
-    const timeFrame = 5;
+    
     if (state == "expand"){
         maxVelocity = 4;
     } else if (state == "collapse"){
@@ -112,6 +112,10 @@ function switchMenuState(count, state){
             if (distance >= 0 || increment <= 0){
                 menu.style.setProperty('left', "0px");
                 flag.style.setProperty('left', (menuWidth.toString() + "px"));
+                for (var i = 0;i < arrows.length;i++){
+                    arrows[i].classList.remove('fa-caret-right');
+                    arrows[i].classList.add('fa-caret-left');
+                };
                 return;
             } else if (distance < 0){
                 menu.style.setProperty('left', ((distance + increment).toString() + "px"));
@@ -122,6 +126,10 @@ function switchMenuState(count, state){
             if (distance <= (0 - menuWidth) || increment >= 0){
                 menu.style.setProperty('left', ((-1 * menuWidth).toString() + "px"));
                 flag.style.setProperty('left', "0px");
+                for (var i = 0;i < arrows.length;i++){
+                    arrows[i].classList.remove('fa-caret-left');
+                    arrows[i].classList.add('fa-caret-right');
+                };
                 return;
             } else if (distance > (0 - menuWidth)){
                 menu.style.setProperty('left', ((distance + increment).toString() + "px"));
