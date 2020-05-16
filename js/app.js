@@ -21,7 +21,13 @@ function assignGridAreas() {
     let navButtons = document.getElementsByClassName('nav-button');
     for (var i = 0; i < navButtons.length; i ++) {
         let iconName = navButtons[i].innerText.toLowerCase();
-        navButtons[i].style.gridArea = iconName;
+        navButtons[i].style.setProperty('grid-area', iconName);
+    };
+    let menuElements = document.getElementById('menu').children;
+    console.log(menuElements);
+    for (var i = 0; i < menuElements.length; i ++) {
+        console.log(menuElements[i].dataset.area);
+        menuElements[i].style.setProperty('grid-area', menuElements[i].dataset.area);    
     };
 }
 
@@ -29,9 +35,9 @@ function stackPanels() {
     const panels = document.getElementsByClassName('panel');
     for (var i = 0; i < panels.length; i ++) {
         let panel = panels[i];
-        let stackOrder = panels.length - Number(panel.dataset["order"]);
+        let stackOrder = panels.length - Number(panel.dataset.order);
         panel.style.zIndex = `${stackOrder}`;
-        panel.style.backgroundColor = panel.dataset["color"];
+        panel.style.setProperty('background-color', panel.dataset.color);
     };
 }
 
