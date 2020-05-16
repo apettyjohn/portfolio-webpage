@@ -13,6 +13,13 @@ window.addEventListener('DOMContentLoaded', () => {
     });
     document.querySelector('.fa-smile').addEventListener('click', (event) => {
         const icon = event.target;
+        icon.classList.remove('fa-smile');
+        icon.classList.add('fa-smile-beam');
+        setTimeout(function () {
+            const icon = event.target;
+            icon.classList.remove('fa-smile-beam');
+            icon.classList.add('fa-smile');
+        }, 1000);
 
     });
     
