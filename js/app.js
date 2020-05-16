@@ -7,11 +7,13 @@ window.addEventListener('DOMContentLoaded', () => {
     assignGridAreas();
     stackPanels();
 
-    document.querySelector('#flag-text').addEventListener('click', () => {
-        hideShowFlag()
-    });
+    document.querySelector('#flag-text').addEventListener('click', hideShowFlag);
     document.querySelector('#flag-text').addEventListener('mouseenter', () => {
         arrowAnimation(0.4, 7)
+    });
+    document.querySelector('.fa-smile').addEventListener('click', (event) => {
+        const icon = event.target;
+
     });
     
     arrowAnimation(1, 10);
@@ -101,9 +103,9 @@ function switchMenuState(count, state){
     let distance = Number(menuStyles.getPropertyValue('left').slice(0,menuStyles.getPropertyValue('left').length - 2));
     
     if (state == "expand"){
-        maxVelocity = 4;
+        maxVelocity = 3;
     } else if (state == "collapse"){
-        maxVelocity = -4;
+        maxVelocity = -3;
     };
 
     if (count <= menuWidth / Math.abs(maxVelocity)) {
