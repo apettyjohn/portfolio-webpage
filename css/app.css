@@ -133,7 +133,7 @@ i {
     text-orientation: mixed;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    color: black;
+    color: #074f7d;
 }
 
 
@@ -190,3 +190,16 @@ i {
     color: #f1f8ff;
     /*border-bottom: 1px solid white;*/
 }
+
+#big-name {
+    position: absolute;
+    font-family: 'Rubik Mono One', sans-serif;
+    font-size: 100px;
+    font-weight: 900;
+    color: #074f7d;
+    width: 500px;
+    height: auto;
+    left: 150px;
+    bottom: 80px;
+}
+
