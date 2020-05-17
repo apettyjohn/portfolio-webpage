@@ -1,6 +1,6 @@
 
-const height = document.height;
-const width = document.width;
+const height = window.innerHeight;
+const width = window.innerWidth;
 
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -22,6 +22,24 @@ window.addEventListener('DOMContentLoaded', () => {
         }, 1000);
 
     });
+
+    buttons = document.getElementsByClassName('button');
+    for (var i = 0; i < buttons.length; i ++){
+        buttons[i].innerText
+        if (buttons[i].innerText == "Connect"){
+            buttons[i].addEventListener('click', hideShowFlag);
+        };
+        if (buttons[i].innerText == 'Works'){
+            buttons[i].addEventListener('click', () => {
+                window.scrollTo(0, 650);
+            });
+        }
+        if (buttons[i].innerText == 'About'){
+            buttons[i].addEventListener('click', () => {
+                window.scrollTo(0, height);
+            });
+        }
+    };
     
     arrowAnimation(1, 10);
 });
