@@ -153,8 +153,9 @@ i {
     height: 98vh;
     box-shadow: 0 4px 10px 5px rgba(5, 5, 5, 0.5);
     margin-bottom: 0px;
-}
 
+}
+/* Panel 1 */
 #menu {
     position: relative;
     display: grid;
@@ -210,4 +211,20 @@ i {
     left: 60%;
     bottom: 35%;
 }
+
+/* Panel 1 */
+div[class="panel"] span {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.fa-tools {
+    margin: 40px;
+}
+
 

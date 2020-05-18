@@ -31,12 +31,14 @@ window.addEventListener('DOMContentLoaded', () => {
         };
         if (buttons[i].innerText == 'Works'){
             buttons[i].addEventListener('click', () => {
-                window.scrollTo(0, 650);
+                let scrollHeight = getComputedStyle(document.querySelector(".panel")).height;
+                console.log(scrollHeight);
+                window.scrollTo(0, Number(scrollHeight.slice(0,scrollHeight.length - 2)) - 5);
             });
         }
         if (buttons[i].innerText == 'About'){
             buttons[i].addEventListener('click', () => {
-                window.scrollTo(0, height);
+                window.scrollTo(0, height * 2);
             });
         }
     };
