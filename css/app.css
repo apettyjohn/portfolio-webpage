@@ -258,6 +258,8 @@ div[class="panel"] span {
     left: 50%;
     height: 60%;
     width: 30%;
+    font-size: 1.75em;
+    font-family: 'Inter', sans-serif;
 }
 
 
