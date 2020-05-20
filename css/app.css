@@ -200,10 +200,12 @@ i {
     color: #074f7d;
     width: 40%;
     height: auto;
-    left: 10%;
-    bottom: 9%;
+    left: 20%;
+    bottom: 18%;
+    text-align: center;
 }
 
+/*
 #duck {
     position: absolute;
     width: 20%;
@@ -211,6 +213,7 @@ i {
     left: 60%;
     bottom: 35%;
 }
+*/
 
 /* Panel 2 */
 div[class="panel"] span {
